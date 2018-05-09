@@ -16,27 +16,24 @@
 package com.whiterabbit.dragqueen;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class VerticalMainActivity extends Activity implements View.OnClickListener {
     private Button mQueen;
     private Button mHidden;
-    private OuterLayout mOuterLayout;
+    private VerticalOuterLayout mVerticalOuterLayout;
     private LinearLayout mMainLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mOuterLayout = (OuterLayout) findViewById(R.id.outer_layout);
+        setContentView(R.layout.activity_vertical_main);
+        mVerticalOuterLayout = (VerticalOuterLayout) findViewById(R.id.outer_layout);
         mMainLayout = (LinearLayout) findViewById(R.id.main_layout);
         mHidden = (Button) findViewById(R.id.hidden_button);
         mHidden.setOnClickListener(this);
@@ -45,7 +42,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mMainLayout.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
             @Override
             public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                if (mOuterLayout.isMoving()) {
+                if (mVerticalOuterLayout.isMoving()) {
                     v.setTop(oldTop);
                     v.setBottom(oldBottom);
                     v.setLeft(oldLeft);
